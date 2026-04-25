@@ -4,15 +4,13 @@ Code is cheap. Trusted change is not.
 
 AI agents write code fast. The bottleneck is knowing whether to merge it. PR count goes up. Confidence doesn't. The tooling, the CI systems, the review infrastructure are all built for a developer writing code in an editor. Developers already moved past that.
 
-We build what's missing. Deterministic checks. Structured evidence at every stage. CI-native gates that tell you what actually passed before a human opens the PR.
-
-**Rust-first. Schema-validated. Actively publishing to [crates.io](https://crates.io/users/effortlesssteven).**
+We build the infrastructure between code generation and trusted merge. Deterministic checks. Structured evidence at every stage. CI-native gates that tell you what actually passed before a human opens the PR.
 
 ---
 
 ## The Architecture
 
-We trust receipts, not agents.
+We trust receipts, not agents. Including our own.
 
 The governed SDLC separates author from critic. The agent writing code is not the agent deciding if it passed. Every stage produces structured evidence: build receipts, gate results, mutation scores, requirement traceability. The human reviews artifacts, not chat transcripts.
 
@@ -20,11 +18,20 @@ The governed SDLC separates author from critic. The agent writing code is not th
 Signal → Plan → Build (Author ⇄ Critic) → Review → Gate → Deploy → Wisdom
 ```
 
-Agents game metrics. They write benchmarks that test struct creation instead of real workloads. They delete tests to stay green. Oppositional validation and mutation-on-diff catch what coverage alone misses. [The talk covers where this breaks and what we do about it.](https://effortlesssteven.com/demoswarm)
+Agents game metrics. They write benchmarks that test struct creation instead of real workloads. They delete tests to stay green. Oppositional validation and mutation-on-diff catch what coverage alone misses. [Where this breaks and what we do about it.](https://effortlesssteven.com/demoswarm)
 
 ---
 
 ## What We Build
+
+### Code Intelligence and Parser Infrastructure
+
+| Repo | What it does |
+|------|-------------|
+| [perl-lsp](https://github.com/EffortlessMetrics/perl-lsp) | Rust Perl Language Server + parser toolkit. Built most of a compiler front-end to stay out of the runtime |
+| [adze](https://github.com/EffortlessMetrics/adze) | Rust-native grammar toolchain with GLR-capable parsing and typed extraction, tree-sitter interoperable |
+| [tokmd](https://github.com/EffortlessMetrics/tokmd) | Code intelligence for humans, machines, and LLMs: receipts, metrics, and insights from your codebase |
+| [BitNet-rs](https://github.com/EffortlessMetrics/BitNet-rs) | Rust inference engine for 1-bit BitNet LLMs (GGUF + llama.cpp compatible) |
 
 ### Governed SDLC Infrastructure
 
@@ -54,16 +61,7 @@ Small, focused tools. Each one answers a specific question about the change and 
 | [shipper](https://github.com/EffortlessMetrics/shipper) | Resumable, backoff-aware publishing reliability layer for Rust workspaces |
 | [shiplog](https://github.com/EffortlessMetrics/shiplog) | Shipping packet generator: compiles GitHub activity into self-review packets with receipts |
 
-### Code Intelligence
-
-| Repo | What it does |
-|------|-------------|
-| [tokmd](https://github.com/EffortlessMetrics/tokmd) | Code intelligence for humans, machines, and LLMs: receipts, metrics, and insights from your codebase |
-| [adze](https://github.com/EffortlessMetrics/adze) | Rust-native grammar toolchain with GLR-capable parsing and typed extraction. Tree-sitter interoperable |
-| [perl-lsp](https://github.com/EffortlessMetrics/perl-lsp) | Rust Perl Language Server (LSP) + parser toolkit (tree-sitter + pure Rust) |
-| [BitNet-rs](https://github.com/EffortlessMetrics/BitNet-rs) | Rust inference engine for 1-bit BitNet LLMs (GGUF + llama.cpp compatible) |
-
-### Legacy & Regulated Data Parsers
+### Legacy and Regulated Data Parsers
 
 Every enterprise AI engagement starts with getting data out of systems built before the architect was born.
 
@@ -87,5 +85,5 @@ Every enterprise AI engagement starts with getting data out of systems built bef
 ## Links
 
 - [effortlesssteven.com](https://effortlesssteven.com)
-- [Agentic Swarms talk](https://effortlesssteven.com/demoswarm)
+- [Talks and appearances](https://effortlesssteven.com/speaking)
 - [crates.io](https://crates.io/users/effortlesssteven)
