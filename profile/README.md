@@ -2,7 +2,7 @@
 
 Code is cheap. Trusted change is not.
 
-AI agents write code fast. The bottleneck is knowing whether to merge it. PR count goes up. Confidence doesn't. The tooling, the CI systems, the review infrastructure are all built for a developer writing code in an editor. Developers already moved past that.
+AI agents write code fast. The bottleneck is knowing whether to merge it. PR count goes up. Confidence doesn't. The CI systems and review infrastructure are built for a developer writing code in an editor. Developers already moved past that.
 
 We build the infrastructure between code generation and trusted merge. Deterministic checks. Structured evidence at every stage. CI-native gates that tell you what actually passed before a human opens the PR.
 
