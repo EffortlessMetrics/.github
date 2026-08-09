@@ -17,7 +17,7 @@ Verification infrastructure for agentic development.
 
 | Repo | What it does |
 |------|-------------|
-| [perl-lsp](https://github.com/EffortlessMetrics/perl-lsp) | Perl 5 language server that parses Perl without running Perl. 925k lines of Rust. Built-in in Red Hat's LSP4IJ for JetBrains and Eclipse |
+| [perl-lsp](https://github.com/EffortlessMetrics/perl-lsp) | Perl 5 language server that parses Perl without running Perl. 1M lines of Rust. Built-in in Red Hat's LSP4IJ for JetBrains |
 | [tokmd](https://github.com/EffortlessMetrics/tokmd) | Deterministic repository receipts, review artifacts, and CI gates |
 
 ## Real-Time Hardware
