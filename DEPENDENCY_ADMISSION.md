@@ -23,7 +23,7 @@ cooldown:
   default-days: 14
 ```
 
-Dependabot security updates bypass this cooldown by design.
+Dependabot security updates bypass this cooldown by design. A package-manager-native age gate is a separate resolver control and may still reject a newly published security fix; use the bounded exception path below when that happens.
 
 For Renovate, use `minimumReleaseAge: "14 days"` and keep release timestamps required. Where Renovate regenerates a lockfile, also enforce the age rule in the package manager when it has a resolver-native control so a newly selected transitive dependency cannot bypass the updater-side gate.
 
@@ -41,5 +41,7 @@ An exception is appropriate when delaying adoption creates more risk than early 
 - reason for early admission;
 - evidence supporting the exception; and
 - whether any temporary policy relaxation must be removed afterward.
+
+When a resolver-native age gate blocks the required version, prefer a package/version-scoped exclusion where the ecosystem supports one. Otherwise relax the resolver age only in the reviewed dependency change, regenerate the lockfile, and restore the 14-day policy in that same change.
 
 The default remains 14 days.
