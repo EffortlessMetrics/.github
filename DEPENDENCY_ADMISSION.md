@@ -31,7 +31,9 @@ For Renovate, use `minimumReleaseAge: "14 days"` and keep release timestamps req
 
 Until Cargo 1.100 is naturally within the repository toolchain policy, enforce the 14-day boundary in dependency-update automation and keep `Cargo.lock` plus `--locked` CI/release resolution. **Do not raise MSRV merely to acquire Cargo-native minimum-publish-age support.**
 
-When Cargo 1.100 is within policy, add resolver-native minimum publish age as a second boundary rather than replacing the updater cooldown.
+The durable Cargo policy owner is the admitted-graph programme in `EffortlessMetrics/depguard` (#21), with the 14-day direct/transitive publication-age invariant owned by depguard #25. Updater cooldowns are shift-left rejection; the exact candidate admission receipt remains the long-term authority.
+
+When Cargo 1.100 is within policy, add resolver-native minimum publish age as a second boundary rather than replacing the updater cooldown or changing the admission-policy identity.
 
 ## Exceptions
 
