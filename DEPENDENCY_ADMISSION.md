@@ -8,7 +8,7 @@ The cooldown is an admission control, not a substitute for vulnerability scannin
 
 1. **14-day version cooldown.** Automated version updates must not admit a version published less than 14 days ago. Apply the rule to every supported ecosystem and to direct and transitive resolution where the package manager can enforce it.
 2. **Committed lockfile.** Repositories with a resolved dependency graph commit the ecosystem lockfile. Library lockfiles govern the repository's own CI/test graph; published dependency constraints remain independently correct for downstream consumers.
-3. **Frozen CI and release resolution.** Ordinary CI and release jobs consume the committed lockfile without implicitly updating it (`cargo --locked`, `npm ci`, pnpm/Bun/uv frozen or locked equivalents, and analogous modes).
+3. **Frozen CI and release resolution.** Ordinary CI and release jobs consume the committed lockfile without implicitly updating it (`cargo <command> --locked`, `npm ci`, pnpm/Bun/uv frozen or locked equivalents, and analogous modes).
 4. **Security updates remain immediate.** A known security remediation may bypass the 14-day window. The exception must be bounded to the required package/version and visible in the change or policy record; do not create permanent package-wide exemptions merely to admit one fix.
 5. **Keep independent security signals.** Continue vulnerability, malicious-package, license/policy, provenance, and dependency-review checks. Age reduces early-adopter exposure; it does not prove a package safe.
 6. **Constrain install-time execution.** Disable or allowlist dependency lifecycle/build-time execution where the ecosystem supports doing so without breaking the build.
