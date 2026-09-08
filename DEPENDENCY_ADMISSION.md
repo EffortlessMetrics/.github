@@ -12,11 +12,11 @@ The cooldown is an admission control, not a substitute for vulnerability scannin
 4. **Security updates remain immediate.** A known security remediation may bypass the 14-day window. The exception must be bounded to the required package/version and visible in the change or policy record; do not create permanent package-wide exemptions merely to admit one fix.
 5. **Keep independent security signals.** Continue vulnerability, malicious-package, license/policy, provenance, and dependency-review checks. Age reduces early-adopter exposure; it does not prove a package safe.
 6. **Constrain install-time execution.** Disable or allowlist dependency lifecycle/build-time execution where the ecosystem supports doing so without breaking the build.
-7. **Fail closed on policy capability.** A configured control that the active package-manager version does not understand is a policy failure. CI should verify the effective toolchain supports the controls it claims to enforce.
+7. **Fail closed on policy capability.** A configured control that the active package-manager version does not understand is a policy failure. CI or repository conformance must fail when the active toolchain cannot enforce a claimed control, when a required cooldown is absent, or when the configured control cannot be proven active.
 
 ## Update automation
 
-For Dependabot version updates, every `updates` entry should include:
+For Dependabot version updates, every `updates` entry must include:
 
 ```yaml
 cooldown:
@@ -41,8 +41,12 @@ An exception is appropriate when delaying adoption creates more risk than early 
 
 - package and exact version;
 - reason for early admission;
-- evidence supporting the exception; and
+- evidence supporting the exception;
+- owner;
+- `expires_at`; and
 - whether any temporary policy relaxation must be removed afterward.
+
+An exception without an owner or expiry is invalid. Expired exceptions must fail admission or conformance rather than remaining as standing bypasses.
 
 When a resolver-native age gate blocks the required version, prefer a package/version-scoped exclusion where the ecosystem supports one. Otherwise relax the resolver age only in the reviewed dependency change, regenerate the lockfile, and restore the 14-day policy in that same change.
 
