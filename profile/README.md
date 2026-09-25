@@ -1,3 +1,7 @@
+<p>
+  <img src="https://raw.githubusercontent.com/EffortlessMetrics/.github/main/assets/logo/effortless-metrics.svg" alt="Effortless Metrics logo" width="128" height="128" />
+</p>
+
 # EffortlessMetrics
 
 Verification infrastructure for agentic development.
