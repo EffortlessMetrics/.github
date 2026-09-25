@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080" role="img" aria-labelledby="em-title em-description">
+  <title id="em-title">Effortless Metrics</title>
+  <desc id="em-description">A deep-teal, three-peaked geometric network emblem with teal panels, four ivory-centred circular nodes, and asymmetric ivory facets. Transparent background. Reconstructed from the original PNG using only vector paths and circles.</desc>
+  <!--Three flat colors. All geometry is filled vector artwork; no fonts, images, filters, or external resources.-->
+  <g id="structure" fill="#0A3F48">
+    <path id="outer-silhouette" d="M 500.4,155.16 A 42.5,42.5 0 1 1 578.07,156.35 L 732.91,392.85 Q 734.12,394.69 735.33,392.85 L 772.42,336.44 A 43,43 0 1 1 850.19,337.26 L 1010.31,583.94 A 37.5,37.5 0 1 1 981.79,652.78 L 577.99,935.1 A 40,40 0 1 1 501.23,934.35 L 97.8,653.01 A 37.5,37.5 0 1 1 69.78,583.92 L 228.66,336.95 A 43,43 0 1 1 306.49,336.64 L 342.93,392.38 Q 344.14,394.23 345.34,392.38 Z"/>
+  </g>
+  <g id="teal-panels" fill="#24868A">
+    <path id="central-lozenge" d="M 539.5,188 L 703,436.5 L 539.5,678.5 L 375.5,436.5 Z"/>
+    <path id="left-shoulder" d="M 267.5,369 L 324.5,454.5 L 258.5,531.5 L 204.5,468.5 Z"/>
+    <path id="right-shoulder" d="M 811.5,369 L 874.5,468.5 L 820.5,531.5 L 754.5,454.5 Z"/>
+    <path id="lower-body" d="M 353.67,495.04 L 538.93,768.26 L 723.85,492.22 L 814,599.91 L 838,685 L 842,691.82 L 540.72,903.7 L 237,692.3 L 240,686 L 264,599.14 Z"/>
+    <path id="left-outer-panel" d="M 176.78,506.65 L 264,613.52 L 206,655 L 200,666.53 L 113.89,606.94 Z"/>
+    <path id="right-outer-panel" d="M 902.54,508.8 L 962.99,606.38 L 879,666.85 L 872,657 L 814,611.83 Z"/>
+  </g>
+  <g id="ivory-facets" fill="#F7FBEF">
+    <path id="central-upper-left-facet" d="M 391.34,459.87 L 483.9,335 L 539,366.5 L 539.5,188 L 375.5,436.5 Z"/>
+    <path id="left-shoulder-ivory" d="M 204.5,468.5 L 258.5,531.5 L 267,521.58 L 267,369.79 Z"/>
+    <path id="right-shoulder-ivory" d="M 811.5,369 L 754.5,454.5 L 812,521.58 L 812,369.79 Z"/>
+    <path id="central-diagonal-left" d="M 543.57,366.5 L 514.67,366.5 L 417.74,498.83 L 433.55,522.16 Z"/>
+    <path id="central-diagonal-right" d="M 563.98,366.5 L 533.02,366.5 L 645.8,521.16 L 661.23,498.33 Z"/>
+    <path id="central-vertical" d="M 539.5,678.5 L 552,660 L 552,366.5 L 526.5,366.5 L 526.5,659.32 Z"/>
+    <path id="left-outer-ivory" d="M 140.49,625.35 L 204.1,540.12 L 176.78,506.65 L 113.89,606.94 Z"/>
+    <path id="right-inner-ivory" d="M 512.31,808 L 542.64,808 L 743.22,515.36 L 723.85,492.22 Z"/>
+    <path id="lower-left-ivory" d="M 295.87,624 L 265.11,624 L 391.65,799.94 L 454.78,843.88 Z"/>
+    <path id="lower-right-ivory" d="M 815.09,624 L 783.74,624 L 623.45,845.52 L 685.2,802.1 Z"/>
+  </g>
+  <g id="node-rings" fill="#0A3F48">
+    <circle id="upper-node-ring" cx="539" cy="366.5" r="66"/>
+    <circle id="left-node-ring" cx="264" cy="624" r="65.5"/>
+    <circle id="right-node-ring" cx="814" cy="624" r="65.5"/>
+    <circle id="lower-node-ring" cx="539.5" cy="806.5" r="67.5"/>
+  </g>
+  <g id="node-centres" fill="#F7FBEF">
+    <circle id="upper-node-centre" cx="539" cy="366.5" r="31"/>
+    <circle id="left-node-centre" cx="264" cy="624" r="30"/>
+    <circle id="right-node-centre" cx="814" cy="624" r="30"/>
+    <circle id="lower-node-centre" cx="539.5" cy="806.5" r="32"/>
+  </g>
+</svg>
