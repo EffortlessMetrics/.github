@@ -1,0 +1,51 @@
+name: Render approved EM logo (one-time rollout)
+on:
+  push:
+    branches: [chore/em-logo-20260925]
+    paths: [assets/logo/effortless-metrics.svg, .github/workflows/em-logo-rollout.yml]
+permissions:
+  contents: write
+concurrency:
+  group: em-logo-rollout
+  cancel-in-progress: false
+jobs:
+  render:
+    if: github.repository == 'EffortlessMetrics/.github'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+      - name: Render and verify approved artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --rm -i -v "$GITHUB_WORKSPACE:/work" -w /work python:3.13-trixie sh -c 'apt-get update -qq && apt-get install -y -qq --no-install-recommends libcairo2 && pip install --disable-pip-version-check CairoSVG==2.8.2 Pillow==11.3.0 && python -' <<'PY'
+          import hashlib, io, json
+          from pathlib import Path
+          import cairosvg, cairocffi
+          from PIL import Image
+          svg = Path('assets/logo/effortless-metrics.svg').read_bytes()
+          assert hashlib.sha256(svg).hexdigest() == '30373fae8cb037153c39f9b9e3c8fa141887208c3bbb77a5f852af7bb7d0ed7c'
+          png = cairosvg.svg2png(bytestring=svg)
+          im = Image.open(io.BytesIO(png)).convert('RGBA')
+          assert im.size == (1080, 1080)
+          assert hashlib.sha256(im.tobytes()).hexdigest() == '172ed1654de8c6f05d25f7ad200456281295f5b682432ef6ec24d82e571b14cb', 'Renderer differs from approved PNG; do not publish'
+          Path('assets/logo/effortless-metrics.png').write_bytes(png)
+          for name in ['assets/logo/effortless-metrics.svg', 'assets/logo/effortless-metrics.png']:
+              data = Path(name).read_bytes()
+              print(json.dumps({'path': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'git_blob': hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()}))
+          print('Cairo', cairocffi.cairo_version_string(), 'CairoSVG', cairosvg.__version__)
+          PY
+      - name: Commit only rendered PNG to rollout branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- assets/logo/effortless-metrics.png
+          git diff --cached --check
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore(brand): render PNG from approved EM SVG'
+          git push origin HEAD:refs/heads/chore/em-logo-20260925
